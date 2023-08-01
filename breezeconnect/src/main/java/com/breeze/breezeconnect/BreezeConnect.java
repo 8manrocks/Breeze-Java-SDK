@@ -300,9 +300,9 @@ public class BreezeConnect extends ApificationBreeze {
             HttpEntity responseEntity = response.getEntity();
             String responseString = EntityUtils.toString(responseEntity, "UTF-8");
             JSONObject responseJson = new JSONObject(responseString);
-            if (responseJson.has("Success") && !responseJson.isNull("Success") && !responseJson.getString("Success").isEmpty() && !responseJson.getString("Success").isBlank()) {
-                JSONObject successJson = new JSONObject(responseJson.getString("Success"));
-                String base64SessionToken = successJson.get("session_token").toString();
+            if (responseJson.has("Success") && !responseJson.isNull("Success")) {
+                JSONObject successJson = responseJson.getJSONObject("Success");
+                String base64SessionToken = successJson.getString("session_token");
                 this.setSession(this.apiKey,secretKey,base64SessionToken);
                 Base64 base64 = new Base64();
                 String cred = new String(base64.decode(base64SessionToken.getBytes()));

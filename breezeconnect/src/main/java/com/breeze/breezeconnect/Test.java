@@ -14,14 +14,17 @@ import java.io.UnsupportedEncodingException;
 import java.net.URI;
 
 public class Test {
+	private static final String appName = "personalBroker";
+	private static final String appKey = "5_81aets4358b9690459R86_&rv28154";
+	private static final String secretKey = "4z696Q5+v3t68302=8Hp759611l1V93~";
+	private static final String apiSession = "17367816";
 	public static void main(String[] args) throws IOException {
 		try {
 
 			////////////////////////Initiate////////////////////////
-			JSONObject creds = new JSONObject("{\"vk\":{\"password\":\"*****\",\"dOB\":\"*****\",\"appKey\":\"***********\",\"secretKey\":\"***********\",\"idirect_Userid\":\"**********8\"}}");
-			BreezeConnect breezeConnect = new BreezeConnect(creds.getJSONObject("vk").getString("appKey"));
-			String apiSession = getApiSession(creds,"vk");
-			breezeConnect.generateSession(creds.getJSONObject("vk").getString("secretKey"),apiSession);
+			BreezeConnect breezeConnect = new BreezeConnect(appKey);
+			breezeConnect.generateSession(secretKey,apiSession);
+			System.out.println(breezeConnect.getDematHoldings().toString());
 			//////////////////////Initiate End//////////////////////
 
 			////////////////////////WebSocket////////////////////////
@@ -43,9 +46,9 @@ public class Test {
 			///////////////////////////API///////////////////////////
 //			System.out.println(breezeConnect.getCustomerDetails(apiSession).toString());
 //			System.out.println(breezeConnect.getDematHoldings());  // RNA Error
-			System.out.println(breezeConnect.getFunds());
+			//System.out.println(breezeConnect.getFunds());
 //			System.out.println(breezeConnect.getPortfolioPositions());
-			System.out.println(breezeConnect.previewOrder("ICIBAN","NSE","margin","limit","907.05","buy","1","","","","N","",""));
+			//System.out.println(breezeConnect.previewOrder("ICIBAN","NSE","margin","limit","907.05","buy","1","","","","N","",""));
 //			System.out.println(breezeConnect.setFunds("debit","200","Equity"));
 //			System.out.println(breezeConnect.getHistoricalDatav2("1minute","2022-04-01T00:00:00.000Z","2022-05-31T00:00:00.000Z","INFTEC","NSE","","","",""));
 //			System.out.println(breezeConnect.getHistoricalData("1minute","2021-11-15T07:00:00.000Z","2021-11-17T07:00:00.000Z",
