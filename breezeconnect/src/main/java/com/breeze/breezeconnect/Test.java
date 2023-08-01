@@ -15,9 +15,9 @@ import java.net.URI;
 
 public class Test {
 	private static final String appName = "personalBroker";
-	private static final String appKey = "5_81aets4358b9690459R86_&rv28154";
-	private static final String secretKey = "4z696Q5+v3t68302=8Hp759611l1V93~";
-	private static final String apiSession = "17367816";
+	private static final String appKey = "";
+	private static final String secretKey = "";
+	private static final String apiSession = "";
 	public static void main(String[] args) throws IOException {
 		try {
 
